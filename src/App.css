@@ -5,18 +5,10 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body{
+  background-color: azure;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+
 
 @keyframes logo-spin {
   from {
@@ -39,4 +31,13 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.wrapper{
+  height: 535px;
+  width: 360px;
+  color: white;
+  background: rgb(206, 54, 54);
+  border-radius: 1.2rem;
+  margin: 100px auto;
 }

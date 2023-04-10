@@ -11,8 +11,10 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Todo/>
-      <CreateForm/>
+      <div className='wrapper'>
+        <Todo/>
+        <CreateForm/>
+      </div>
     </div>
   )
 }
