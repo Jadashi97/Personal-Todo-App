@@ -15,6 +15,16 @@ function App() {
         return [...prevTodos, newTodo]
       });
     }
+
+    // remove the the todo when delete icon is pressed
+    const deleteTodo = (id) => {
+      setTodos((prevTodos) => {
+        return prevTodos.filter((itemTodo, index) => {
+          return index !== id;
+        });
+
+      });
+    }
     
     return (
       <div className="App">
@@ -25,7 +35,9 @@ function App() {
             return(
               <Todo
                 key={index}
+                id={index}
                 value={itemTodo}
+                onDelete={deleteTodo}
               />
             )
           })}

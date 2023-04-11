@@ -51,3 +51,8 @@ body{
   outline: none;
   padding: none;
 }
+
+.todo li{
+  font-size: "3rem";
+  white-space: "nowrap";
+}

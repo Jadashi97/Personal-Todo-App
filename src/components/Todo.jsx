@@ -2,13 +2,21 @@ import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Todo = (props) => {
+
+  const handleDelete = () => {
+    props.onDelete(props.id);
+  }
   return (
-    <div>
+    <div className='todo'>
       <ul>
-        <li>{props.value}</li>
-        <button>
-          <DeleteIcon fontSize='small'/>
-        </button>
+        <li>
+          <h4>
+            {props.value}
+            <button onClick={handleDelete}>
+              <DeleteIcon fontSize='10'/>
+            </button>
+          </h4>
+        </li>
       </ul>
     </div>
   )
