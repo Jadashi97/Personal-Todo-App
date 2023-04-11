@@ -1,43 +1,38 @@
 import React, { useState } from 'react'
 import Todo from "../components/Todo";
 
-export default function CreateForm() {
-  const [items, setItems] = useState([]);
-  const [todo, setTodo] = useState(" ");
+export default function CreateForm(props) {
 
-  const handleChange = (e) => {
-    let value = e.target.value;
-    console.log(value);
-    setTodo(value);
-  }
+    const [todo, setTodo] = useState(" "); //sets todo that needs to be created
+
+    const handleChange = (e) => {
+      let value = e.target.value;
+      console.log(value);
+      
+      setTodo(value)
+    }
 
 
-  const handleSubmit = (e) => {  
-    e.preventDefault();
+    const handleSubmit = (e) => {  
+      e.preventDefault();
 
-    setItems([...items, todo]); 
-    console.log(setItems());
-    setTodo(" ");
+      props.onAdd(todo); //pass props to parent(app.jsx)
 
-  }
+      setTodo(" "); //reset the input field
+    }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={todo} 
-          onChange={handleChange} 
-          placeholder='add next todo' 
-        />
-        <button type='submit'>Add</button>
-      </form>
-      <ul>
-        {todo.map((items) => (
-          <li>{items}</li>
-        ))}
-      </ul>
-    </div>
-  )
+    return (
+      <div>
+        <form>
+          <input 
+            type="text" 
+            value={todo} 
+            onChange={handleChange} 
+            placeholder={'add todo'}
+          />
+          <button onClick={handleSubmit}>Add</button>
+        </form>
+      </div>
+    )
 }
 

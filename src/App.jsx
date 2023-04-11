@@ -7,16 +7,31 @@ import Todo from './components/Todo';
 import CreateForm from './components/CreateForm';
 
 function App() {
+  const [todos, setTodos] = useState([]);
 
-  return (
-    <div className="App">
-      <Header/>
-      <div className='wrapper'>
-        <Todo/>
-        <CreateForm/>
+    // check todos and add any new todos we have
+    const addTodo = (newTodo) => {
+      setTodos(prevTodos => {
+        return [...prevTodos, newTodo]
+      });
+    }
+    
+    return (
+      <div className="App">
+        <Header/>
+        <div className='wrapper'>
+          <CreateForm onAdd={addTodo}/>
+          {todos.map((itemTodo, index) => {
+            return(
+              <Todo
+                key={index}
+                value={itemTodo}
+              />
+            )
+          })}
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
 export default App;

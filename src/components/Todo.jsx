@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Todo = () => {
+const Todo = (props) => {
   return (
     <div>
       <ul>
-        <li>Todo item 1</li>
-        <li>Todo item 2</li>
-        <li>Todo item 3</li>
+        <li>{props.value}</li>
+        <button>Del</button>
       </ul>
     </div>
   )
