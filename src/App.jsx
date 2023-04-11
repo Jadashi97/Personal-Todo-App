@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Header/>
       <div className='wrapper'>
-        {/* <Todo/> */}
+        <Todo/>
         <CreateForm/>
       </div>
     </div>

@@ -28,50 +28,16 @@ export default function CreateForm() {
           type="text" 
           value={todo} 
           onChange={handleChange} 
-          placeholder='add next todo' />
+          placeholder='add next todo' 
+        />
         <button type='submit'>Add</button>
       </form>
       <ul>
-        {items.map((item, index)=> (
-          <li key={index}>
-            {item}
-          </li>
+        {todo.map((items) => (
+          <li>{items}</li>
         ))}
       </ul>
     </div>
   )
 }
 
-// import React, { useState } from 'react';
-
-// function Todo() {    
-//   const [items, setItems] = useState([]);
-//   const [text, setText] = useState('');
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setItems([...items, text]);
-//     setText('');
-//   };
-
-//   return (
-//     <div>
-//       <h1>Todo App</h1>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           value={text}
-//           onChange={(e) => setText(e.target.value)}
-//         />
-//         <button type="submit">Add Item</button>
-//       </form>
-//       <ul>
-//         {items.map((item, index) => (
-//           <li key={index}>{item}</li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Todo;
