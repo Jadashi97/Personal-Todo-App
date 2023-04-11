@@ -6,7 +6,7 @@
 }
 
 body{
-  background-color: azure;
+  background-color: rgb(111, 141, 141);
 }
 
 
@@ -35,9 +35,19 @@ body{
 
 .wrapper{
   height: 535px;
-  width: 360px;
-  color: white;
-  background: rgb(206, 54, 54);
+  width: 800px;
+  color: #ffffff;
+  background: rgb(54, 206, 186);
   border-radius: 1.2rem;
   margin: 100px auto;
+}
+.inputContainer {
+  background: #ffffff;
+  border-radius: 1.4rem;
+  padding: 0 0.8rem;
+  align-items: center;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  padding: none;
 }

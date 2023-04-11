@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Todo from "../components/Todo";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+
 
 export default function CreateForm(props) {
 
@@ -25,12 +27,15 @@ export default function CreateForm(props) {
       <div>
         <form>
           <input 
+            className='inputContainer'
             type="text" 
             value={todo} 
             onChange={handleChange} 
             placeholder={'add todo'}
           />
-          <button onClick={handleSubmit}>Add</button>
+          <button onClick={handleSubmit}>
+            <AddBoxIcon fontSize="small"/>
+          </button>
         </form>
       </div>
     )
