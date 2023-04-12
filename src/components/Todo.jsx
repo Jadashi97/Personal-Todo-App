@@ -4,8 +4,21 @@ import EditIcon from '@mui/icons-material/Edit';
 
 const Todo = (props) => {
 
-  // const [isEditing, setIsEditing] = useState(false);
-  // const [editedTodo, setEditedTodo] = useState(props.value);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTodo, setEditedTodo] = useState(props.value);
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+  };
+
+  const handleSave = () => {
+    onEdit(editedTodo);
+    setIsEditing(false);
+  }
 
   const handleDelete = () => {
     props.onDelete(props.id);

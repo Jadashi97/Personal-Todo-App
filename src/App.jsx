@@ -35,7 +35,6 @@ function App() {
         return prevTodos.filter((itemTodo, index) => {
           return index !== id;
         });
-
       });
     }
     
