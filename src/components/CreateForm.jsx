@@ -33,9 +33,9 @@ export default function CreateForm(props) {
             onChange={handleChange} 
             placeholder={'add todo'}
           />
-          <button onClick={handleSubmit}>
-            <AddBoxIcon fontSize="15"/>
-          </button>
+          {/* <button >
+          </button> */}
+            <AddBoxIcon onClick={handleSubmit} fontSize="large"/>
         </form>
       </div>
     )

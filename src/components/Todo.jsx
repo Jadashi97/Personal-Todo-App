@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const Todo = (props) => {
+
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [editedTodo, setEditedTodo] = useState(props.value);
 
   const handleDelete = () => {
     props.onDelete(props.id);
@@ -10,12 +14,11 @@ const Todo = (props) => {
     <div className='todo'>
       <ul>
         <li>
-          <h4>
+          <h2>
             {props.value}
-            <button onClick={handleDelete}>
-              <DeleteIcon fontSize='10'/>
-            </button>
-          </h4>
+            <DeleteIcon onClick={handleDelete} fontSize='small'/>
+            <EditIcon/>
+          </h2>
         </li>
       </ul>
     </div>

@@ -9,6 +9,19 @@ import CreateForm from './components/CreateForm';
 function App() {
   const [todos, setTodos] = useState([]);
 
+    // handling the Edit button when clicked
+    const handleEdit = ()=>{
+      setTodos((prevTodos) => {
+        prevTodos.map((todo) => {
+          if(todo.id === editedTodo.id){
+            return editedTodo;
+          }
+          return todo;
+        })
+      })
+    }
+
+
     // check todos and add any new todos we have
     const addTodo = (newTodo) => {
       setTodos(prevTodos => {
@@ -38,6 +51,7 @@ function App() {
                 id={index}
                 value={itemTodo}
                 onDelete={deleteTodo}
+                onEdit={handleEdit}
               />
             )
           })}

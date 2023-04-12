@@ -36,17 +36,17 @@ body{
 .wrapper{
   height: 535px;
   width: 800px;
-  color: #ffffff;
+  color: #0d0c0c;
   background: rgb(54, 206, 186);
   border-radius: 1.2rem;
   margin: 100px auto;
 }
 .inputContainer {
-  background: #ffffff;
+  background: #000000;
   border-radius: 1.4rem;
   padding: 0 0.8rem;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   border: none;
   outline: none;
   padding: none;
@@ -54,5 +54,5 @@ body{
 
 .todo li{
   font-size: "3rem";
-  white-space: "nowrap";
+  /* white-space: "nowrap"; */
 }
