@@ -20,9 +20,31 @@ const Todo = (props) => {
     setIsEditing(false);
   }
 
+  const handleInputChange = (e)=> {
+    let value = e.target.value;
+    setEditedTodo({...editedTodo, value});
+  }
+
   const handleDelete = () => {
     props.onDelete(props.id);
   }
+
+  if(isEditing){
+    return(
+      <li>
+        <input
+          className='inputContainer'
+          type="text" 
+          value={props.value} 
+          onChange={handleInputChange} 
+          placeholder={'add todo'}
+        />
+        <button onClick={handleSave}>Save</button>
+        <button onClick={handleCancel}>Cancel</button>
+      </li>
+    )
+  }
+
   return (
     <div className='todo'>
       <ul>
