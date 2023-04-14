@@ -19,13 +19,14 @@ const Todo = (props) => {
 
   const handleSave = () => {
     // console.log("save me!!!")
-    onEdit(editedTodo);
+    // onEdit(editedTodo);
+    props.onEdit(props.id)
     setIsEditing(false);
   }
 
   const handleInputChange = (e)=> {
     let value = e.target.value;
-    setEditedTodo(...editedTodo, value);
+    setEditedTodo(value);
   }
 
   const handleDelete = () => {
