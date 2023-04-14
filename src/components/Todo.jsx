@@ -8,21 +8,24 @@ const Todo = (props) => {
   const [editedTodo, setEditedTodo] = useState(props.value);
 
   const handleEdit = () => {
+  
     setIsEditing(true);
   };
 
   const handleCancel = () => {
+    // console.log("cancel me!!")
     setIsEditing(false);
   };
 
   const handleSave = () => {
+    // console.log("save me!!!")
     onEdit(editedTodo);
     setIsEditing(false);
   }
 
   const handleInputChange = (e)=> {
     let value = e.target.value;
-    setEditedTodo({...editedTodo, value});
+    setEditedTodo(...editedTodo, value);
   }
 
   const handleDelete = () => {
@@ -52,7 +55,7 @@ const Todo = (props) => {
           <h2>
             {props.value}
             <DeleteIcon onClick={handleDelete} fontSize='small'/>
-            <EditIcon/>
+            <EditIcon onClick={handleEdit} fontSize='small'/>
           </h2>
         </li>
       </ul>
