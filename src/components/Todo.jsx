@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 const Todo = (props) => {
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedTodo, setEditedTodo] = useState(" ");
+  const [editedTodo, setEditedTodo] = useState(props.editedTodo);
 
   const handleEdit = () => {
   
@@ -20,7 +20,7 @@ const Todo = (props) => {
   const handleSave = () => {
     // console.log("save me!!!")
     onEdit(editedTodo);
-    props.onEdit(props.id)
+    handleEdit();
     setIsEditing(false);
   }
 

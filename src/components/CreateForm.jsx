@@ -9,7 +9,7 @@ export default function CreateForm(props) {
 
     const handleChange = (e) => {
       let value = e.target.value;
-      console.log(value);
+      // console.log(value);
       
       setTodo(value)
     }
@@ -31,7 +31,7 @@ export default function CreateForm(props) {
             type="text" 
             value={todo} 
             onChange={handleChange} 
-            placeholder={'add todo'}
+            placeholder={'add next todo'}
           />
             <AddBoxIcon onClick={handleSubmit} fontSize="large"/>
         </form>
