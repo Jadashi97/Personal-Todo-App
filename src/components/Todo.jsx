@@ -5,11 +5,14 @@ import EditIcon from '@mui/icons-material/Edit';
 const Todo = (props) => {
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editedTodo, setEditedTodo] = useState(props.editedTodo);
+  const [currentTodo, setCurrentTodo] = useState({});
 
-  const handleEdit = () => {
+  const handleEdit = (todo) => {
   
     setIsEditing(true);
+
+    // set the currentTodo to the todo item that was clicked
+    setCurrentTodo({...todo});
   };
 
   const handleCancel = () => {
@@ -17,17 +20,18 @@ const Todo = (props) => {
     setIsEditing(false);
   };
 
-  const handleSave = () => {
-    // console.log("save me!!!")
-    onEdit(editedTodo);
-    handleEdit();
+  const handleSave = (id, updtedTodo) => {
+    // here we are mapping over the todos array - the idea is check if the todo.id matches the id we pass into the function
+    // if the id's match, use the second parameter to pass in the updated todo object
+    // otherwise just use old todo
+    // const updatedItem = todos.mao
     setIsEditing(false);
   }
 
   const handleInputChange = (e)=> {
     let value = e.target.value;
-    console.log(value);
-    setEditedTodo(value);
+    setCurrentTodo({...currentTodo, value});
+    console.log(currentTodo);
   }
 
   const handleDelete = () => {
@@ -40,7 +44,7 @@ const Todo = (props) => {
         <input
           className='inputContainer'
           type="text" 
-          value={props.value} 
+          value={currentTodo.value} 
           onChange={handleInputChange} 
           placeholder={'add todo'}
         />

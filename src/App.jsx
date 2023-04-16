@@ -8,6 +8,7 @@ import CreateForm from './components/CreateForm';
 
 function App() {
 
+  const [todo, setTodo] = useState(" ");
 
   // because localstorage is synchronous - that could slow down the application
   // instead of using just an empty array as the initial state - we can use a function in its place,
