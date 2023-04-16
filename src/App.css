@@ -42,7 +42,7 @@ body{
   margin: 100px auto;
 }
 .inputContainer {
-  background: #ffffff;
+  background-color: #ffffff;
   border-radius: 1.4rem;
   padding: 0 0.8rem;
   align-items: center;
@@ -50,9 +50,10 @@ body{
   border: none;
   outline: none;
   padding: none;
+  color: #0d0c0c;
 }
 
 .todo li{
   font-size: "3rem";
-  /* white-space: "nowrap"; */
+  white-space: "nowrap";
 }

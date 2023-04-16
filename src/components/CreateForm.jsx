@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Todo from "../components/Todo";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
@@ -17,7 +17,7 @@ export default function CreateForm(props) {
 
     const handleSubmit = (e) => {  
       e.preventDefault();
-
+      
       props.onAdd(todo); //pass props to parent(app.jsx)
 
       setTodo(" "); //reset the input field

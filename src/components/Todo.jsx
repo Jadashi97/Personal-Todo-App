@@ -26,6 +26,7 @@ const Todo = (props) => {
 
   const handleInputChange = (e)=> {
     let value = e.target.value;
+    console.log(value);
     setEditedTodo(value);
   }
 
@@ -39,7 +40,7 @@ const Todo = (props) => {
         <input
           className='inputContainer'
           type="text" 
-          value={editedTodo} 
+          value={props.value} 
           onChange={handleInputChange} 
           placeholder={'add todo'}
         />
