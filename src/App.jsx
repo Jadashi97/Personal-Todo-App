@@ -11,7 +11,7 @@ function App() {
     const [isEditing, setIsEditing] = useState(false);
     const [currentTodo, setCurrentTodo] = useState({});
 
-  // this will only be executed on the initial render
+    // this will only be executed on the initial render
     const [todos, setTodos] = useState(() => {
       const savedTodos = localStorage.getItem("todos");
 
@@ -77,19 +77,12 @@ function App() {
       setCurrentTodo({...todo});
     }
 
-
-    // check todos and add any new todos we have
-    const addTodo = (newTodo) => {
-      setTodos(prevTodos => {
-        return [...prevTodos, newTodo]
-      });
-    }
-
     // remove the the todo when delete icon is pressed
     const deleteTodo = (id) => {
+
       setTodos((prevTodos) => {
-        return prevTodos.filter((itemTodo, index) => {
-          return index !== id;
+        return prevTodos.filter((todo) => {
+          return todo.id !== id;
         });
       });
     }
@@ -108,7 +101,6 @@ function App() {
           ): (
             <CreateForm 
               todo={todo}
-              // onAdd={addTodo}
               onAddInputChange={handleAddInputChange}
               onAddFormSubmit={handleAddFormSubmit}
             />
