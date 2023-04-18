@@ -3,39 +3,21 @@ import Todo from "../components/Todo";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
 
-export default function CreateForm(props) {
-
-    const [todo, setTodo] = useState(" "); //sets todo that needs to be created
-
-    const handleChange = (e) => {
-      let value = e.target.value;
-      // console.log(value);
-      
-      setTodo(value)
-    }
-
-
-    const handleSubmit = (e) => {  
-      e.preventDefault();
-      
-      props.onAdd(todo); //pass props to parent(app.jsx)
-
-      setTodo(" "); //reset the input field
-    }
+export default function CreateForm({todo, onAddFormSubmit, onAddInputChange}) {
 
     return (
-      <div>
         <form>
+          <h2>Add Todo</h2>
           <input 
             className='inputContainer'
+            name="todo"
             type="text" 
             value={todo} 
-            onChange={handleChange} 
+            onChange={onAddInputChange} 
             placeholder={'add next todo'}
           />
-            <AddBoxIcon onClick={handleSubmit} fontSize="large"/>
+            <AddBoxIcon onClick={onAddFormSubmit} fontSize="large"/>
         </form>
-      </div>
-    )
-}
+    );
+};
 

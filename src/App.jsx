@@ -1,31 +1,29 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header';
 import Todo from './components/Todo';
 import CreateForm from './components/CreateForm';
+import EditForm from './components/EditForm';
 
 function App() {
 
-  const [todo, setTodo] = useState(" ");
+    const [todo, setTodo] = useState(" ");
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentTodo, setCurrentTodo] = useState({});
 
-  // because localstorage is synchronous - that could slow down the application
-  // instead of using just an empty array as the initial state - we can use a function in its place,
-  // which will only be executed on the initial render
-  const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem("todos");
+  // this will only be executed on the initial render
+    const [todos, setTodos] = useState(() => {
+      const savedTodos = localStorage.getItem("todos");
 
-    if(savedTodos){
-      // return the parsed JSON object back to a javascript object
-      return JSON.parse(savedTodos);
-    }else{
-      return [];
-    }
-  });
+      if(savedTodos){
+        // return the parsed JSON object back to a javascript object
+        return JSON.parse(savedTodos);
+      }else{
+        return [];
+      }
+    });
 
     useEffect(()=> {
-      // localstorage only support storing strings as keys and values
       // - therefore we cannot store arrays and objects without converting the object
       // into a string first. JSON.stringify will convert the object into a JSON string
       localStorage.setItem("todos", JSON.stringify(todos));
@@ -34,16 +32,49 @@ function App() {
       // localstorage anytime the todos state changes
     }, [todos]);
 
-    // handling the Edit button when clicked
-    const handleEdit = ()=>{
-      setTodos((prevTodos) => {
-        prevTodos.map((todo) => {
-          if(todo.id === editedTodo.id){
-            return editedTodo;
+    const handleAddInputChange = (e) => {
+      setTodo(e.target.value);
+    }
+
+    const handleAddFormSubmit = (e) => {
+      e.preventDefault();
+
+      if(todo !== " "){
+        setTodos([
+          ...todos,
+          {
+            id: new Date(),
+            text: todo.trim()
           }
-          return todo;
-        })
-      })
+        ]);
+      }
+      setTodo(' ');
+    }
+    
+    const handleEditFormSubmit = (e) => {
+      e.preventDefault();
+      
+      handleUpdateTodo(currentTodo.id, currentTodo);
+    }
+
+    const handleUpdateTodo = (id, updatedTodo) => {
+      const updatedItem = todos.map((todo) => {
+        return todo.id === id ? updatedTodo : todo;
+      });
+      setIsEditing(false);
+      setTodos(updatedItem)
+    }
+
+
+    const handleEditInputChange = (e)=> {
+      let value = e.target.value;
+      setCurrentTodo({...currentTodo, text: value});
+    };
+
+    // handling the Edit button when clicked
+    const handleEdit = (todo)=>{
+      setIsEditing(true);
+      setCurrentTodo({...todo});
     }
 
 
@@ -66,20 +97,35 @@ function App() {
     return (
       <div className="App">
         <Header/>
-        <div className='wrapper'>
-          <CreateForm onAdd={addTodo}/>
-          {todos.map((todo, index) => {
-            return(
+        <ul className='wrapper'>
+          {isEditing ? (
+            <EditForm
+              currentTodo={currentTodo}
+              setIsEditing={setIsEditing}
+              onEditInputChange={handleEditInputChange}
+              onEditFormSubmit={handleEditFormSubmit}
+            />
+          ): (
+            <CreateForm 
+              todo={todo}
+              // onAdd={addTodo}
+              onAddInputChange={handleAddInputChange}
+              onAddFormSubmit={handleAddFormSubmit}
+            />
+
+          )}
+
+          {todos.map((todo, index) => (
               <Todo
                 key={index}
                 id={index}
-                value={todo}
-                onDelete={deleteTodo}
+                todo={todo}
                 onEdit={handleEdit}
+                onDelete={deleteTodo}
               />
             )
-          })}
-        </div>
+          )}
+        </ul>
       </div>
     )
 }

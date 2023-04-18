@@ -11,7 +11,7 @@ const Header = () => {
   }
   return (
     <div style={myStyles} >
-      Personal Todo app
+      Lets Get It🏋🏿
     </div>
   )
 }
